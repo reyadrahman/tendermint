@@ -34,14 +34,14 @@ echo
 echo "* [$(date +"%T")] running go tests and app tests in docker container"
 # sometimes its helpful to mount the local test folder
 # -v $DIR:/go/src/github.com/tendermint/tendermint/test
-if [[ "$CIRCLECI" == true ]]; then
-	docker run --name run_test -e CIRCLECI=true -t tester bash test/run_test.sh
-else
-	docker run --name run_test -t tester bash test/run_test.sh
-fi
+#if [[ "$CIRCLECI" == true ]]; then
+#	docker run --name run_test -e CIRCLECI=true -t tester bash test/run_test.sh
+#else
+#	docker run --name run_test -t tester bash test/run_test.sh
+#fi
 
 # copy the coverage results out of docker container
-docker cp run_test:/go/src/github.com/tendermint/tendermint/coverage.txt .
+#docker cp run_test:/go/src/github.com/tendermint/tendermint/coverage.txt .
 
 # test basic network connectivity
 # by starting a local testnet and checking peers connect and make blocks
